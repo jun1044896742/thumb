@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>大拇指</title>
+	<style>
+		.hand{
+			width:150px;
+			height:202px;
+			position:relative;
+			margin-top:10%;
+			margin-left:40%;
+			background-color:rgb(239,184,157);
+			border-top-left-radius:25px;
+			border-bottom-left-radius:25px;
+			cursor:pointer;
+		}
+		.arm{
+			position:absolute;
+			width:100px;
+			height:150px;
+			left:-80px;
+			top:50%;
+			margin-top:-75px;
+			border-top:2px solid rgb(185,122,79);
+			background-color:rgb(239,184,157);
+		}
+		.finger{
+			position:absolute;
+			width:50px;
+			height:50px;
+			border:1px solid rgb(185,122,79);
+			background-color:rgb(239,184,157);
+			border-left:0;
+			border-top-right-radius:25px;
+			border-bottom-right-radius:25px;
+			right:-50px;
+			top:0;
+		}
+		.finger:nth-child(2){
+			top:50px;
+		}
+		.finger:nth-child(3){
+			top:100px;
+		}
+		.finger:nth-child(4){
+			top:150px;
+		}
+		.finger:nth-child(5){
+			top:-56px;
+			left:20px;
+			width:100px;
+			transform:rotate(-60deg);
+			-webkit-transform:rotate(-60deg);
+		}
+	</style>
+</head>
+<body>
+	<div class='hand'>
+		<div class='arm'></div>
+		<div class='finger'></div>
+		<div class='finger'></div>
+		<div class='finger'></div>
+		<div class='finger'></div>
+		<div class='finger'></div>
+	</div>
+	<script src='https://code.jquery.com/jquery-3.2.1.js'></script>
+	<script src='add.js'></script>
+	<script src="system.js"></script>
+	<script>
+		SystemJS.config({
+		  baseURL: '/finger'
+		});
+	  SystemJS.import('thumb-es.js').then(function(m){
+	  	$.extend({
+	  		thumb:m.default.Thumb
+	  	})
+	  	callBack();
+	  });
+	  function(){
+	  	let ele = document.getElementsByClassName('hand')[0];
+		console.log(ele)
+		let tumb = new $.thumb(0,ele);
+		tumb.clickButton();
+	  }
+	</script> 
+</body>
+</html>
