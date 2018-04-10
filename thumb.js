@@ -3,4 +3,4 @@ let ele = document.getElementsByClassName('hand')[0];
 console.log(ele)
 let tumb = new Thumb(0,ele);
 tumb.clickButton();
-console.log(2);
+console.log(3);
